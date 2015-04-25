@@ -11,4 +11,12 @@ class Phonebook(object):
     def lookup_entry_by_name(self, name):
         return self.book[name]
 
+    def is_consistent(self):
+        return True
+
+    def get_names(self):
+        return self.book.keys()
+
+    def get_numbers(self):
+        return self.book.values()
         
