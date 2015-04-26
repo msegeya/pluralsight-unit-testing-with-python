@@ -3,8 +3,12 @@ import pytest
 from phonebook import Phonebook
 
 @pytest.fixture
-def phonebook():
-    return Phonebook()
+def phonebook(request):
+    phonebook = Phonebook()
+    def cleanup_phonebook():
+        phonebook.clear()
+    request.addfinalizer(cleanup_phonebook)
+    return phonebook
 
 def test_add_and_lookup_entry(phonebook):
     phonebook.add('Bob', '123')
