@@ -10,3 +10,9 @@ class Phonebook(object):
 
     def lookup(self, name):
         return self.book[name]
+
+    def names(self):
+        return self.book.keys()
+
+    def numbers(self):
+        return self.book.values()
