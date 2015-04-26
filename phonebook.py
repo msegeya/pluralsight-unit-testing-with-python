@@ -12,6 +12,15 @@ class Phonebook(object):
         return self.book[name]
 
     def is_consistent(self):
+        # Check if there are duplicates
+        if len(self.book.values()) != len(set(self.book.values())):
+            return False
+        # Check no number is a prefix of any other number
+        for p, n in enumerate(sorted(self.book.values())):
+            for p2, n2 in enumerate(sorted(self.book.values())):
+                if p != p2:
+                    if n.startswith(n2):
+                        return False
         return True
 
     def get_names(self):
